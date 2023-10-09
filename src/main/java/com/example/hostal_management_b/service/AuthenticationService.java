@@ -2,12 +2,14 @@ package com.example.hostal_management_b.service;
 
 import com.example.hostal_management_b.configuration.AuthenticationResponse;
 import com.example.hostal_management_b.dto.Academic_Registration_Request;
+import com.example.hostal_management_b.dto.LoginRequest;
 import com.example.hostal_management_b.model.Academic_staff;
 import com.example.hostal_management_b.model.Role;
 import com.example.hostal_management_b.repository.Academic_staff_Repo;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +20,7 @@ public class AuthenticationService {
     private final Academic_staff_Repo academicStaffRepo;
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
+    private final AuthenticationManager authenticationManager;
 
     public AuthenticationResponse register(Academic_Registration_Request request){
         if ("ADMIN".equals(request.getRole())){
@@ -82,6 +85,21 @@ public class AuthenticationService {
         }
         return null;
 
+    }
+
+    public AuthenticationResponse authenticate(LoginRequest request){
+        authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(
+                        request.getEmail(),
+                        request.getPassword()
+                )
+        );
+        var academic_staff = academicStaffRepo.findByEmail(request.getEmail())
+                .orElseThrow();
+        var jwtToken = jwtService.generateToken(academic_staff);
+        return AuthenticationResponse.builder()
+                .Token(jwtToken)
+                .build();
     }
 
 }
