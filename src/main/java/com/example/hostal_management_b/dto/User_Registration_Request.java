@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Student_Registration_Request {
+public class User_Registration_Request {
     private int id;
     private String firstname;
     private String lastname;

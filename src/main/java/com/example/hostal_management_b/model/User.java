@@ -13,13 +13,15 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.List;
 
+
 @Entity
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Table(name="student")
-public class Student implements UserDetails {
+@Table(name="Users")
+public class User implements UserDetails {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -31,7 +33,7 @@ public class Student implements UserDetails {
     private String lastname;
 
     @Column(unique=true)
-    private String student_id;
+    private String staff_id;
 
     @Column(unique=true)
     private String email;
@@ -39,7 +41,7 @@ public class Student implements UserDetails {
     @Column(nullable = false)
     private String password;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String room;
 
     @Enumerated(EnumType.STRING)
