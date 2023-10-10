@@ -9,12 +9,13 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Academic_Registration_Request {
+public class User_Registration_Request {
     private int id;
     private String firstname;
     private String lastname;
     private String staff_id;
     private String email;
     private String password;
+    private String room;
     private String role;
 }

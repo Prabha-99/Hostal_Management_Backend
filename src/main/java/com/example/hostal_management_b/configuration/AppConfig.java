@@ -1,6 +1,6 @@
 package com.example.hostal_management_b.configuration;
 
-import com.example.hostal_management_b.repository.Academic_staff_Repo;
+import com.example.hostal_management_b.repository.User_Repo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,7 +21,7 @@ import java.util.concurrent.Executors;
 @Configuration
 @RequiredArgsConstructor
 public class AppConfig {
-    private final Academic_staff_Repo academicStaffRepo;
+    private final User_Repo academicStaffRepo;
 
     @Bean                                                   /*Beans are always Public*/
     public UserDetailsService userDetailsService(){
