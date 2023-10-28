@@ -13,6 +13,8 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class AuthenticationService {
@@ -31,7 +33,7 @@ public class AuthenticationService {
                 var user = User.builder()
                         .firstname(request.getFirstname())
                         .lastname(request.getLastname())
-                        .reg_no(request.getStaff_id())
+                        .reg_no(request.getReg_no())
                         .email(request.getEmail())
                         .password(passwordEncoder.encode(request.getPassword()))
                         .room(roomNumber)
@@ -51,7 +53,7 @@ public class AuthenticationService {
             var user = User.builder()
                     .firstname(request.getFirstname())
                     .lastname(request.getLastname())
-                    .reg_no(request.getStaff_id())
+                    .reg_no(request.getReg_no())
                     .email(request.getEmail())
                     .password(passwordEncoder.encode(request.getPassword()))
                     .room("NULL")
@@ -67,7 +69,7 @@ public class AuthenticationService {
             var user = User.builder()
                     .firstname(request.getFirstname())
                     .lastname(request.getLastname())
-                    .reg_no(request.getStaff_id())
+                    .reg_no(request.getReg_no())
                     .email(request.getEmail())
                     .password(passwordEncoder.encode(request.getPassword()))
                     .room("NULL")
@@ -83,7 +85,7 @@ public class AuthenticationService {
             var user = User.builder()
                     .firstname(request.getFirstname())
                     .lastname(request.getLastname())
-                    .reg_no(request.getStaff_id())
+                    .reg_no(request.getReg_no())
                     .email(request.getEmail())
                     .password(passwordEncoder.encode(request.getPassword()))
                     .room("NULL")
@@ -99,7 +101,7 @@ public class AuthenticationService {
             var user = User.builder()
                     .firstname(request.getFirstname())
                     .lastname(request.getLastname())
-                    .reg_no(request.getStaff_id())
+                    .reg_no(request.getReg_no())
                     .email(request.getEmail())
                     .password(passwordEncoder.encode(request.getPassword()))
                     .room("NULL")
@@ -127,6 +129,10 @@ public class AuthenticationService {
         return AuthenticationResponse.builder()
                 .Token(jwtToken)
                 .build();
+    }
+
+    public List<Object[]> getAllStudentsRegistrationAndRoom() {
+        return userRepo.findAllStudentsRegistrationAndRoom();
     }
 
 

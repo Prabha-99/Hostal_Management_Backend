@@ -16,4 +16,7 @@ public interface User_Repo extends JpaRepository<User, Integer> {
     @Query(value = "SELECT COUNT(*) FROM Users WHERE room = :room", nativeQuery = true)
     int countByRoom(String room);
 
+    @Query("SELECT u.reg_no, u.room FROM User u WHERE u.role = 'STUDENT'")
+    List<Object[]> findAllStudentsRegistrationAndRoom();
+
 }

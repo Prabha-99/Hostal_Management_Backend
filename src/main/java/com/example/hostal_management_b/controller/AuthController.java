@@ -12,6 +12,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/auth")
 @RequiredArgsConstructor
@@ -36,6 +38,11 @@ public class AuthController {
         Authentication authentication= SecurityContextHolder.getContext().getAuthentication();
         String firstname=authentication.getName();
         return new NavBarLogin(firstname);
+    }
+
+    @GetMapping("/regroom")
+    public List<Object[]> getAllStudentsRegistrationAndRoom() {
+        return authenticationService.getAllStudentsRegistrationAndRoom();
     }
 
 
