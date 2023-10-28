@@ -41,7 +41,7 @@ public class User implements UserDetails {
     @Column(nullable = false)
     private String password;
 
-    @Column(nullable = true)
+
     private String room;
 
     @Enumerated(EnumType.STRING)
