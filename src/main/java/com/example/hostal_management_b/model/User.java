@@ -33,7 +33,7 @@ public class User implements UserDetails {
     private String lastname;
 
     @Column(unique=true)
-    private String staff_id;
+    private String reg_no;
 
     @Column(unique=true)
     private String email;
