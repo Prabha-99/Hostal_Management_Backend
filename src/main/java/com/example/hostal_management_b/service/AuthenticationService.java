@@ -13,6 +13,8 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class AuthenticationService {
@@ -22,12 +24,36 @@ public class AuthenticationService {
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
 
-    public AuthenticationResponse register(User_Registration_Request request){
-        if ("ADMIN".equals(request.getRole())){
+    public AuthenticationResponse register(User_Registration_Request request) {
+        if ("STUDENT".equals(request.getRole())) {
+            String roomNumber = request.getRoom();
+            int currentOccupancy = userRepo.countByRoom(roomNumber);
+
+            if (currentOccupancy < 4) {
+                var user = User.builder()
+                        .firstname(request.getFirstname())
+                        .lastname(request.getLastname())
+                        .reg_no(request.getReg_no())
+                        .email(request.getEmail())
+                        .password(passwordEncoder.encode(request.getPassword()))
+                        .room(roomNumber)
+                        .role(Role.STUDENT)
+                        .build();
+
+                userRepo.save(user);
+                var jwtToken = jwtService.generateToken(user);
+                return AuthenticationResponse.builder()
+                        .Token(jwtToken)
+                        .build();
+            } else {
+                throw new RuntimeException("Room is already full. Please choose another room.");
+            }
+        }
+        else if ("ADMIN".equals(request.getRole())){
             var user = User.builder()
                     .firstname(request.getFirstname())
                     .lastname(request.getLastname())
-                    .reg_no(request.getStaff_id())
+                    .reg_no(request.getReg_no())
                     .email(request.getEmail())
                     .password(passwordEncoder.encode(request.getPassword()))
                     .room("NULL")
@@ -43,7 +69,7 @@ public class AuthenticationService {
             var user = User.builder()
                     .firstname(request.getFirstname())
                     .lastname(request.getLastname())
-                    .reg_no(request.getStaff_id())
+                    .reg_no(request.getReg_no())
                     .email(request.getEmail())
                     .password(passwordEncoder.encode(request.getPassword()))
                     .room("NULL")
@@ -59,7 +85,7 @@ public class AuthenticationService {
             var user = User.builder()
                     .firstname(request.getFirstname())
                     .lastname(request.getLastname())
-                    .reg_no(request.getStaff_id())
+                    .reg_no(request.getReg_no())
                     .email(request.getEmail())
                     .password(passwordEncoder.encode(request.getPassword()))
                     .room("NULL")
@@ -75,7 +101,7 @@ public class AuthenticationService {
             var user = User.builder()
                     .firstname(request.getFirstname())
                     .lastname(request.getLastname())
-                    .reg_no(request.getStaff_id())
+                    .reg_no(request.getReg_no())
                     .email(request.getEmail())
                     .password(passwordEncoder.encode(request.getPassword()))
                     .room("NULL")
@@ -87,24 +113,7 @@ public class AuthenticationService {
                     .Token(jwtToken)
                     .build();
         }
-        else if ("STUDENT".equals(request.getRole())){
-            var user = User.builder()
-                    .firstname(request.getFirstname())
-                    .lastname(request.getLastname())
-                    .reg_no(request.getStaff_id())
-                    .email(request.getEmail())
-                    .password(passwordEncoder.encode(request.getPassword()))
-                    .room(request.getRoom())
-                    .role(Role.STUDENT)
-                    .build();
-            userRepo.save(user);
-            var jwtToken = jwtService.generateToken(user);
-            return AuthenticationResponse.builder()
-                    .Token(jwtToken)
-                    .build();
-        }
         return null;
-
     }
 
     public AuthenticationResponse authenticate(LoginRequest request){
@@ -120,6 +129,10 @@ public class AuthenticationService {
         return AuthenticationResponse.builder()
                 .Token(jwtToken)
                 .build();
+    }
+
+    public List<Object[]> getAllStudentsRegistrationAndRoom() {
+        return userRepo.findAllStudentsRegistrationAndRoom();
     }
 
 

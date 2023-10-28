@@ -13,7 +13,7 @@ public class User_Registration_Request {
     private int id;
     private String firstname;
     private String lastname;
-    private String staff_id;
+    private String reg_no;
     private String email;
     private String password;
     private String room;
