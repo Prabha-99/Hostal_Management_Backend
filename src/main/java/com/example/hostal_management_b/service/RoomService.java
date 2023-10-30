@@ -14,4 +14,12 @@ public class RoomService {
         return roomRepo.save(room);
     }
 
+    public Room getRoomByRoomNo(int roomNo) {
+        return roomRepo.findById(roomNo)
+                .orElseThrow(() -> new RuntimeException("Room not found"));
+    }
+
+    public Room updateRoom(Room room) {
+        return roomRepo.save(room);
+    }
 }
