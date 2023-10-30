@@ -3,6 +3,7 @@ package com.example.hostal_management_b.service;
 import com.example.hostal_management_b.configuration.AuthenticationResponse;
 import com.example.hostal_management_b.dto.User_Registration_Request;
 import com.example.hostal_management_b.dto.LoginRequest;
+import com.example.hostal_management_b.model.Room;
 import com.example.hostal_management_b.model.User;
 import com.example.hostal_management_b.model.Role;
 import com.example.hostal_management_b.repository.User_Repo;
@@ -23,6 +24,7 @@ public class AuthenticationService {
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
+    private final RoomService roomService; // Inject RoomService
 
     public AuthenticationResponse register(User_Registration_Request request) {
         if ("STUDENT".equals(request.getRole())) {
@@ -41,6 +43,12 @@ public class AuthenticationService {
                         .build();
 
                 userRepo.save(user);
+
+                // Increment no_of_students for the assigned room
+                Room room = roomService.getRoomByRoomNo(Integer.parseInt(roomNumber));
+                room.setNo_of_students(room.getNo_of_students() + 1);
+                roomService.updateRoom(room);
+
                 var jwtToken = jwtService.generateToken(user);
                 return AuthenticationResponse.builder()
                         .Token(jwtToken)
@@ -48,8 +56,7 @@ public class AuthenticationService {
             } else {
                 throw new RuntimeException("Room is already full. Please choose another room.");
             }
-        }
-        else if ("ADMIN".equals(request.getRole())){
+        } else if ("ADMIN".equals(request.getRole())) {
             var user = User.builder()
                     .firstname(request.getFirstname())
                     .lastname(request.getLastname())
@@ -64,8 +71,8 @@ public class AuthenticationService {
             return AuthenticationResponse.builder()
                     .Token(jwtToken)
                     .build();
-        }
-        else if ("SUB_WARDEN".equals(request.getRole())){
+
+        } else if ("SUB_WARDEN".equals(request.getRole())) {
             var user = User.builder()
                     .firstname(request.getFirstname())
                     .lastname(request.getLastname())
@@ -80,8 +87,8 @@ public class AuthenticationService {
             return AuthenticationResponse.builder()
                     .Token(jwtToken)
                     .build();
-        }
-        else if ("ACADEMIC_WARDEN".equals(request.getRole())){
+
+        } else if ("ACADEMIC_WARDEN".equals(request.getRole())) {
             var user = User.builder()
                     .firstname(request.getFirstname())
                     .lastname(request.getLastname())
@@ -96,8 +103,8 @@ public class AuthenticationService {
             return AuthenticationResponse.builder()
                     .Token(jwtToken)
                     .build();
-        }
-        else if ("DEAN".equals(request.getRole())){
+
+        } else if ("DEAN".equals(request.getRole())) {
             var user = User.builder()
                     .firstname(request.getFirstname())
                     .lastname(request.getLastname())
@@ -116,7 +123,7 @@ public class AuthenticationService {
         return null;
     }
 
-    public AuthenticationResponse authenticate(LoginRequest request){
+    public AuthenticationResponse authenticate(LoginRequest request) {
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         request.getEmail(),
@@ -134,9 +141,4 @@ public class AuthenticationService {
     public List<Object[]> getAllStudentsRegistrationAndRoom() {
         return userRepo.findAllStudentsRegistrationAndRoom();
     }
-
-
-
-
-
 }
