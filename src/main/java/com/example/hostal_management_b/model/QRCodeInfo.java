@@ -9,12 +9,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Table(name = "Property")
-public class Property {
-
+@Table(name ="qrinfo")
+public class QRCodeInfo {
     @Id
-    private String propID;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
     private String name;
-    private String status;
-
 }
