@@ -38,6 +38,9 @@ public class SecurityConfig {
 
 
 
+                .requestMatchers("/api/room/add").permitAll()
+
+
                 .anyRequest().authenticated()
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
