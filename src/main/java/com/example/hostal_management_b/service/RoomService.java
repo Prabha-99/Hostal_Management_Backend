@@ -5,6 +5,8 @@ import com.example.hostal_management_b.repository.RoomRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class RoomService {
@@ -21,6 +23,10 @@ public class RoomService {
 
     public Room updateRoom(Room room) {
         return roomRepo.save(room);
+    }
+
+    public List<Room> getAllRooms() {
+        return roomRepo.findAll();
     }
 
 }
