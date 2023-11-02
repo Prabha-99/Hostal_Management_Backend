@@ -16,11 +16,20 @@ public class ComplainService {
 
 
     public Complain saveComplain(Complain complain) {
-        // You can add additional logic here if needed before saving
         return complainRepo.save(complain);
     }
 
     public List<Complain> getAllComplains() {
         return complainRepo.findAll();
+    }
+
+    public Complain getFileById(Long id) {
+        return complainRepo.findById(id).orElse(null);
+    }
+
+    public Complain updateComplaintStatus(Complain updatedComplaint) {
+        // Update the status of the complaint in the database
+        updatedComplaint.setStatus("Accepted");
+        return complainRepo.save(updatedComplaint);
     }
 }
