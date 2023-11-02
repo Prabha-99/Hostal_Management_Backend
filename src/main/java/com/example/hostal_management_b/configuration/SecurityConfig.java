@@ -35,6 +35,10 @@ public class SecurityConfig {
                 .requestMatchers("/api/auth/regroom").permitAll()
                 .requestMatchers("/api/auth/update-room").permitAll()
 
+                .requestMatchers("/api/qr/uploadImage").permitAll()
+                .requestMatchers("/api/complain/**").permitAll()
+
+
                 .requestMatchers("/api/room/add").permitAll()
                 .requestMatchers("/api/room/all").permitAll()
 

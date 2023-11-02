@@ -20,13 +20,14 @@ import lombok.NoArgsConstructor;
 @Table(name = "rooms")
 public class Room {
     @Id
+    private String roomID;
+    private String hostalType;
     private int room_no;
-
     @Column(nullable = true)
     private int no_of_items;
-
     @Column(nullable = true)
     private int no_of_students;
+
 
 
 }
