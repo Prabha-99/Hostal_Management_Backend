@@ -22,4 +22,5 @@ public class RoomService {
     public Room updateRoom(Room room) {
         return roomRepo.save(room);
     }
+
 }

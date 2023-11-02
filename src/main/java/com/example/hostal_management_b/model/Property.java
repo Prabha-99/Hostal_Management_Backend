@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 public class Property {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private String propID;
     private String name;
     private String status;

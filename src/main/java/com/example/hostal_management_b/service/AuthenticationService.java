@@ -141,4 +141,28 @@ public class AuthenticationService {
     public List<Object[]> getAllStudentsRegistrationAndRoom() {
         return userRepo.findAllStudentsRegistrationAndRoom();
     }
+
+    public void updateRoom(int userId, String newRoomNumber) {
+        User user = userRepo.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        String oldRoomNumber = user.getRoom();
+
+        // Check if the user is actually changing rooms
+        if (!oldRoomNumber.equals(newRoomNumber)) {
+            // Update the user's room
+            user.setRoom(newRoomNumber);
+            userRepo.save(user);
+
+            // Update the old room's no_of_students
+            Room oldRoom = roomService.getRoomByRoomNo(Integer.parseInt(oldRoomNumber));
+            oldRoom.setNo_of_students(oldRoom.getNo_of_students() - 1);
+            roomService.updateRoom(oldRoom);
+
+            // Update the new room's no_of_students
+            Room newRoom = roomService.getRoomByRoomNo(Integer.parseInt(newRoomNumber));
+            newRoom.setNo_of_students(newRoom.getNo_of_students() + 1);
+            roomService.updateRoom(newRoom);
+        }
+    }
 }
