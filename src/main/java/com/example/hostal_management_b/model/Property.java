@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 public class Property {
 
     @Id
+
     private String propID;
     private String name;
     private String status;

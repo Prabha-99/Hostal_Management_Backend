@@ -8,6 +8,7 @@ import com.example.hostal_management_b.dto.LoginRequest;
 import com.example.hostal_management_b.model.User;
 import com.example.hostal_management_b.service.AuthenticationService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -47,6 +48,15 @@ public class AuthController {
     @GetMapping("/regroom")
     public List<Object[]> getAllStudentsRegistrationAndRoom() {
         return authenticationService.getAllStudentsRegistrationAndRoom();
+    }
+    @PostMapping("/update-room")
+    public ResponseEntity<String> updateRoom(@RequestParam int userId, @RequestParam String newRoomNumber) {
+        try {
+            authenticationService.updateRoom(userId, newRoomNumber);
+            return ResponseEntity.ok("Room updated successfully");
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
     }
 
 
