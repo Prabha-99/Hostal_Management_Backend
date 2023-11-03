@@ -29,4 +29,8 @@ public class RoomService {
         return roomRepo.findAll();
     }
 
+    public long getRoomCount() {
+        return roomRepo.count();
+    }
+
 }
