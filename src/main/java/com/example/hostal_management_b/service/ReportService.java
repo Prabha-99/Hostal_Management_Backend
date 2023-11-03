@@ -48,7 +48,7 @@ public class ReportService {
         List<Complain> complains=complainRepo.findAll();//Retrieving all the daily complains
 
         //Loading the .jrxml file and Compiling it
-        File file= ResourceUtils.getFile("classpath:Products.jrxml");
+        File file= ResourceUtils.getFile("classpath:report.jrxml");
         JasperReport jasperReport= JasperCompileManager.compileReport(file.getAbsolutePath());
 
         //Mapping List Data into the Report
