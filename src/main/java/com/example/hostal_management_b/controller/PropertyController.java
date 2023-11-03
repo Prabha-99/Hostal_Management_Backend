@@ -26,4 +26,10 @@ public class PropertyController {
     public List<Property> getAllItems() {
         return propertyService.getAllItems();
     }
+
+    @GetMapping("/count")
+    public ResponseEntity<Long> getRoomCount() {
+        long count = propertyService.getCountItems();
+        return ResponseEntity.ok(count);
+    }
 }

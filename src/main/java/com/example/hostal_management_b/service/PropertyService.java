@@ -84,4 +84,8 @@ public class PropertyService {
     public List<Property> getAllItems() {
         return propertyRepo.findAll();
     }
+
+    public long getCountItems(){
+        return propertyRepo.count();
+    }
 }
