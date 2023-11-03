@@ -1,6 +1,8 @@
 package com.example.hostal_management_b.service;
 
+import com.example.hostal_management_b.controller.DeanComplainsRepo;
 import com.example.hostal_management_b.model.Complain;
+import com.example.hostal_management_b.model.DeanComplains;
 import com.example.hostal_management_b.repository.ComplainRepo;
 import com.example.hostal_management_b.repository.ReportRepo;
 import lombok.RequiredArgsConstructor;
@@ -30,6 +32,7 @@ public class ReportService {
     private final JdbcTemplate jdbcTemplate;
     private final ReportRepo reportRepo;
     private final ComplainRepo complainRepo;
+    private final DeanComplainsRepo deanComplainsRepo;
 
 
     //Local variable to Store current Data.
@@ -42,14 +45,14 @@ public class ReportService {
     public String exportDailyReport() throws FileNotFoundException, JRException {
         String reportPath = "D:\\Generated_Reports";
 
-        List<Complain> products=complainRepo.findAll();//Retrieving all the daily complains
+        List<Complain> complains=complainRepo.findAll();//Retrieving all the daily complains
 
         //Loading the .jrxml file and Compiling it
         File file= ResourceUtils.getFile("classpath:Products.jrxml");
         JasperReport jasperReport= JasperCompileManager.compileReport(file.getAbsolutePath());
 
         //Mapping List Data into the Report
-        JRBeanCollectionDataSource source=new JRBeanCollectionDataSource(products);
+        JRBeanCollectionDataSource source=new JRBeanCollectionDataSource(complains);
         Map<String,Object> parameters=new HashMap<>();
         parameters.put("Created by","Faculty of Technology");
 
@@ -66,9 +69,11 @@ public class ReportService {
 
         //Printing the Report
         JasperPrint print= JasperFillManager.fillReport(jasperReport,parameters,source);
-        JasperExportManager.exportReportToPdfFile(print,reportPath+"\\Products.pdf");
+        JasperExportManager.exportReportToPdfFile(print,reportPath+"\\Complains.pdf");
 
 
         return "Report generated Successfully at : "+reportPath;
     }
+
+
 }

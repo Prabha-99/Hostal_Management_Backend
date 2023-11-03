@@ -24,4 +24,5 @@ public class ReportController {
     public String generateDailyReport() throws JRException, FileNotFoundException{
         return reportService.exportDailyReport();
     }
+
 }
