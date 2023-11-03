@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -20,6 +21,11 @@ public class Complain {
     private Long cID;
     @JsonProperty("cType")
     private String cType;
+
+    @ManyToOne
+    @JoinColumn(name = "reg_no")
+    private User user;
+
     private long room;
     private String description;
     private String imagePath;
@@ -28,4 +34,8 @@ public class Complain {
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
+
+
+
+
 }

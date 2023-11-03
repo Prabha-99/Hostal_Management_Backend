@@ -1,22 +1,21 @@
 package com.example.hostal_management_b.service;
 
 import com.example.hostal_management_b.model.AcademicWardenComplains;
-import com.example.hostal_management_b.model.SubWardenComplains;
 import com.example.hostal_management_b.repository.AcademicWardenComplainsRepo;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class AcademicWardenService {
+public class AcademicWardenComplainsService {
 
     private final AcademicWardenComplainsRepo academicWardenComplainsRepo;
 
-    public AcademicWardenService(AcademicWardenComplainsRepo academicWardenComplainsRepo) {
+    public AcademicWardenComplainsService(AcademicWardenComplainsRepo academicWardenComplainsRepo) {
         this.academicWardenComplainsRepo = academicWardenComplainsRepo;
     }
 
-    public List<AcademicWardenComplains> getAllSubWardenComplains() {
+    public List<AcademicWardenComplains> getAllAcademicWardenComplains() {
         return academicWardenComplainsRepo.findAll();
     }
 

@@ -19,4 +19,5 @@ public interface User_Repo extends JpaRepository<User, Integer> {
     @Query("SELECT u.reg_no, u.room FROM User u WHERE u.role = 'STUDENT'")
     List<Object[]> findAllStudentsRegistrationAndRoom();
 
+
 }
