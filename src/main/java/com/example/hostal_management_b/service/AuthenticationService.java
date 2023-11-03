@@ -1,6 +1,7 @@
 package com.example.hostal_management_b.service;
 
 import com.example.hostal_management_b.configuration.AuthenticationResponse;
+import com.example.hostal_management_b.dto.UserDto;
 import com.example.hostal_management_b.dto.User_Registration_Request;
 import com.example.hostal_management_b.dto.LoginRequest;
 import com.example.hostal_management_b.model.Room;
@@ -15,6 +16,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -140,5 +142,15 @@ public class AuthenticationService {
 
     public List<Object[]> getAllStudentsRegistrationAndRoom() {
         return userRepo.findAllStudentsRegistrationAndRoom();
+    }
+
+
+    public UserDto getUserInfo(String username) { //Service to get UserInformation according to the JWT
+        Optional<User> user = userRepo.findByEmail(username);
+        UserDto userDto = new UserDto();
+        userDto.setFirstname(user.get().getFirstname());
+        userDto.setLastname(user.get().getLastname());
+        userDto.setReg_no(user.get().getReg_no());
+        return userDto;
     }
 }
