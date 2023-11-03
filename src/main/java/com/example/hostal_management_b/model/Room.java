@@ -27,6 +27,4 @@ public class Room {
     private int no_of_items;
     @Column(nullable = true)
     private int no_of_students;
-
-
 }
