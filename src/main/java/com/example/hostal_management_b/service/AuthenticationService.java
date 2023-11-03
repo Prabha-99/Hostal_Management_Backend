@@ -178,4 +178,8 @@ public class AuthenticationService {
             roomService.updateRoom(newRoom);
         }
     }
+
+    public long getUserCount (){
+        return userRepo.count();
+    }
 }

@@ -59,6 +59,12 @@ public class AuthController {
         }
     }
 
+    @GetMapping("/count")
+    public ResponseEntity<Long> getRoomCount() {
+        long count = authenticationService.getUserCount();
+        return ResponseEntity.ok(count);
+    }
+
 
 
 

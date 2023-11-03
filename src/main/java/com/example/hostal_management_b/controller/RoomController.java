@@ -23,4 +23,10 @@ public class RoomController {
     public List<Room> getAllRooms() {
         return roomService.getAllRooms();
     }
+
+    @GetMapping("/count")
+    public ResponseEntity<Long> getRoomCount() {
+        long roomCount = roomService.getRoomCount();
+        return ResponseEntity.ok(roomCount);
+    }
 }
