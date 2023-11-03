@@ -1,4 +1,4 @@
-package com.example.hostal_management_b.controller;
+package com.example.hostal_management_b.repository;
 
 import com.example.hostal_management_b.model.DeanComplains;
 import org.springframework.data.jpa.repository.JpaRepository;
