@@ -1,5 +1,7 @@
 package com.example.hostal_management_b.service;
 
+import com.example.hostal_management_b.model.Complain;
+import com.example.hostal_management_b.repository.ComplainRepo;
 import com.example.hostal_management_b.repository.ReportRepo;
 import lombok.RequiredArgsConstructor;
 import net.sf.jasperreports.engine.*;
@@ -27,6 +29,8 @@ import java.util.Map;
 public class ReportService {
     private final JdbcTemplate jdbcTemplate;
     private final ReportRepo reportRepo;
+    private final ComplainRepo complainRepo;
+
 
     //Local variable to Store current Data.
     LocalDate currentDate = LocalDate.now();
@@ -38,7 +42,7 @@ public class ReportService {
     public String exportDailyReport() throws FileNotFoundException, JRException {
         String reportPath = "D:\\Generated_Reports";
 
-        List<Product> products=productRepo.findAll();//Retrieving all User Data into a List
+        List<Complain> products=complainRepo.findAll();//Retrieving all the daily complains
 
         //Loading the .jrxml file and Compiling it
         File file= ResourceUtils.getFile("classpath:Products.jrxml");
@@ -54,7 +58,7 @@ public class ReportService {
         KeyHolder keyHolder = new GeneratedKeyHolder();
         jdbcTemplate.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1, "Products"+dateCreated+".pdf");
+            ps.setString(1, "Daily"+dateCreated+".pdf");
             ps.setString(2,reportPath+".pdf");
             ps.setTimestamp(3, new Timestamp(System.currentTimeMillis())); // set the current date and time
             return ps;
