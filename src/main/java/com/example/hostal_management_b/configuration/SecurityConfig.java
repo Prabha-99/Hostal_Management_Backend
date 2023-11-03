@@ -42,6 +42,8 @@ public class SecurityConfig {
                 .requestMatchers("/api/room/add").permitAll()
                 .requestMatchers("/api/room/all").permitAll()
 
+                .requestMatchers("/api/property/add").permitAll()
+
 
                 .anyRequest().authenticated()
                 .and()

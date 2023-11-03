@@ -9,13 +9,17 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Table(name = "Property")
+@Table(name = "property")
 public class Property {
 
     @Id
-
+    @Column(unique = true)
     private String propID;
+    @Column(nullable = false)
     private String name;
+    @Column(nullable = true)
     private String status;
+    @Column(nullable = false)
+    private int room_no;
 
 }
