@@ -11,4 +11,5 @@ public class UserDto {   //For getting firstname and Lastname for Viewing purpos
     private String firstname;
     private String lastname;
     private String reg_no;
+    private String room;
 }

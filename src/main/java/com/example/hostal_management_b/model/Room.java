@@ -28,6 +28,4 @@ public class Room {
     @Column(nullable = true)
     private int no_of_students;
 
-
-
 }

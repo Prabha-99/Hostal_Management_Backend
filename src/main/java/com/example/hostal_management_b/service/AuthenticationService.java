@@ -151,6 +151,7 @@ public class AuthenticationService {
         userDto.setFirstname(user.get().getFirstname());
         userDto.setLastname(user.get().getLastname());
         userDto.setReg_no(user.get().getReg_no());
+        userDto.setRoom(user.get().getRoom());
         return userDto;
     }
 
