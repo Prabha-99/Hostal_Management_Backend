@@ -43,6 +43,7 @@ public class SecurityConfig {
                 .requestMatchers("/api/room/all").permitAll()
 
                 .requestMatchers("/api/property/add").permitAll()
+                .requestMatchers("/api/property/all").permitAll()
 
 
                 .anyRequest().authenticated()
