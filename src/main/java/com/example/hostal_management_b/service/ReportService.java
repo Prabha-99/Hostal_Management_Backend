@@ -1,18 +1,13 @@
 package com.example.hostal_management_b.service;
 
-import com.example.hostal_management_b.controller.DeanComplainsRepo;
 import com.example.hostal_management_b.model.Complain;
-import com.example.hostal_management_b.model.DeanComplains;
-import com.example.hostal_management_b.model.Report;
 import com.example.hostal_management_b.repository.ComplainRepo;
-import com.example.hostal_management_b.repository.ReportRepo;
 import lombok.RequiredArgsConstructor;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
 
@@ -31,9 +26,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class ReportService {
     private final JdbcTemplate jdbcTemplate;
-    private final ReportRepo reportRepo;
     private final ComplainRepo complainRepo;
-    private final DeanComplainsRepo deanComplainsRepo;
 
 
     //Local variable to Store current Data.
