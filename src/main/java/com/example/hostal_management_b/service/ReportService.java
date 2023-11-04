@@ -42,7 +42,7 @@ public class ReportService {
     String dateCreated = currentDate.format(formatter);
 
 
-    @Scheduled(cron = "0 0 21 * * ?")
+
     public String exportDailyReport() throws FileNotFoundException, JRException {
         String reportPath = "D:\\Generated_Reports";
 
@@ -70,7 +70,7 @@ public class ReportService {
 
         //Printing the Report
         JasperPrint print= JasperFillManager.fillReport(jasperReport,parameters,source);
-        JasperExportManager.exportReportToPdfFile(print,reportPath+"\\Complains.pdf");
+        JasperExportManager.exportReportToPdfFile(print,reportPath+"\\Complains_"+System.currentTimeMillis()+".pdf");
 
 
         return "Report generated Successfully at : "+reportPath;
