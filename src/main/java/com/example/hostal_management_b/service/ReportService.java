@@ -70,7 +70,7 @@ public class ReportService {
 
         //Printing the Report
         JasperPrint print= JasperFillManager.fillReport(jasperReport,parameters,source);
-        JasperExportManager.exportReportToPdfFile(print,reportPath+"\\Complains_"+System.currentTimeMillis()+".pdf");
+        JasperExportManager.exportReportToPdfFile(print,reportPath+"\\Complains"+System.currentTimeMillis()+".pdf");
 
 
         return "Report generated Successfully at : "+reportPath;
