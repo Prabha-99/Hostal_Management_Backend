@@ -61,47 +61,65 @@
     <queryString language="SQL">
         <![CDATA[SELECT * FROM ORDERS;]]>
     </queryString>
-    <field name="cID" class="java.lang.Long">
-    </field>
-    <field name="room" class="java.lang.Long">
-    </field>
-    <field name="description" class="java.lang.String">
-    </field>
-    <field name="status" class="java.lang.String">
-    </field>
-    <field name="createdAt" class="java.util.Date">
-    </field>
+    <field name="cID" class="java.lang.Long"/>
+    <field name="room" class="java.lang.Long"/>
+    <field name="description" class="java.lang.String"/>
+    <field name="status" class="java.lang.String"/>
+    <field name="createdAt" class="java.util.Date"/>
     <title>
-        <band height="123" splitType="Stretch">
-            <line>
-                <reportElement x="0" y="80" width="556" height="1" uuid="806ce5df-1219-4876-ae0c-ca7405b1f246">
-                    <property name="local_mesure_unitheight" value="pixel"/>
-                    <property name="com.jaspersoft.studio.unit.height" value="px"/>
-                </reportElement>
-            </line>
+        <band height="163" splitType="Stretch">
             <staticText>
-                <reportElement x="207" y="20" width="237" height="30" uuid="e622555d-198b-4ccd-a4a1-c59c53304058">
+                <reportElement style="Table" x="90" y="20" width="301" height="30" uuid="e622555d-198b-4ccd-a4a1-c59c53304058">
                     <property name="local_mesure_unitheight" value="pixel"/>
                     <property name="com.jaspersoft.studio.unit.height" value="px"/>
                 </reportElement>
+                <box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+                    <pen lineWidth="1.0" lineColor="#FFFFFF"/>
+                </box>
                 <textElement>
-                    <font size="19" isBold="true"/>
+                    <font size="20" isBold="true"/>
                 </textElement>
-                <text><![CDATA[Faculty of Technology]]></text>
+                <text><![CDATA[FACULTY OF TECHNOLOGY]]></text>
             </staticText>
-            <image>
-                <reportElement x="140" y="0" width="50" height="60" uuid="3936b23a-cfbc-4ffa-afbb-75d9e105a2b9"/>
-            </image>
             <staticText>
-                <reportElement x="207" y="40" width="237" height="30" uuid="a0185cbd-9f20-4a67-8ae2-238daa4e5841">
+                <reportElement x="90" y="50" width="237" height="30" uuid="a0185cbd-9f20-4a67-8ae2-238daa4e5841">
                     <property name="local_mesure_unitheight" value="pixel"/>
                     <property name="com.jaspersoft.studio.unit.height" value="px"/>
                     <property name="com.jaspersoft.studio.unit.y" value="pixel"/>
                 </reportElement>
                 <textElement>
+                    <font size="16" isBold="true"/>
+                </textElement>
+                <text><![CDATA[UNIVERSITY OF RUHUNA]]></text>
+            </staticText>
+            <image>
+                <reportElement x="40" y="20" width="50" height="50" uuid="8162b307-e4e8-469d-9651-372e35ddc6d8"/>
+                <imageExpression><![CDATA["LOGO_OF_RUHUNA.jpg"]]></imageExpression>
+            </image>
+            <staticText>
+                <reportElement x="154" y="120" width="237" height="30" uuid="e33303d2-886a-4ff7-8e4f-14c6cdae1ae7">
+                    <property name="local_mesure_unitheight" value="pixel"/>
+                    <property name="com.jaspersoft.studio.unit.height" value="px"/>
+                    <property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+                </reportElement>
+                <textElement textAlignment="Center">
                     <font size="14" isBold="true"/>
                 </textElement>
-                <text><![CDATA[University of Ruhuna]]></text>
+                <text><![CDATA[STUDENT'S COMPLAIN REPORT]]></text>
+            </staticText>
+            <staticText>
+                <reportElement positionType="Float" mode="Opaque" x="380" y="0" width="176" height="80" forecolor="#FFFFFF" backcolor="#A6051A" uuid="97fdf69f-d9d7-4b47-9849-121a55f95a74"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="Serif" size="9" isItalic="true"/>
+                </textElement>
+                <text><![CDATA[]]></text>
+            </staticText>
+            <staticText>
+                <reportElement positionType="Float" mode="Opaque" x="0" y="0" width="30" height="80" forecolor="#FFFFFF" backcolor="#A6051A" uuid="65d1d6b5-aabd-4979-bab0-9c9ec1d21a84"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="Serif" size="9" isItalic="true"/>
+                </textElement>
+                <text><![CDATA[]]></text>
             </staticText>
         </band>
     </title>
@@ -111,8 +129,11 @@
                 <reportElement style="Column header" positionType="Float" x="0" y="0" width="111" height="20" forecolor="#000000" uuid="181a4e47-7f21-43a3-9a2b-955011f1b02b">
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f62b0293-1a06-4eae-af5b-5d8c798481cb"/>
                 </reportElement>
-                <textElement>
-                    <font fontName="Arial" size="12" isBold="true"/>
+                <box>
+                    <pen lineWidth="0.25"/>
+                </box>
+                <textElement textAlignment="Center">
+                    <font fontName="Arial" size="14" isBold="true"/>
                 </textElement>
                 <text><![CDATA[Complain ID]]></text>
             </staticText>
@@ -120,8 +141,11 @@
                 <reportElement style="Column header" positionType="Float" x="111" y="0" width="111" height="20" forecolor="#000000" uuid="2515e2a4-977e-496e-8602-6602c2340270">
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0f911d1e-0e7e-42a5-a3fe-8926242d1ea7"/>
                 </reportElement>
-                <textElement>
-                    <font fontName="Arial" size="12" isBold="true"/>
+                <box>
+                    <pen lineWidth="0.25"/>
+                </box>
+                <textElement textAlignment="Center">
+                    <font fontName="Arial" size="14" isBold="true"/>
                 </textElement>
                 <text><![CDATA[Date]]></text>
             </staticText>
@@ -129,8 +153,11 @@
                 <reportElement style="Column header" positionType="Float" x="222" y="0" width="111" height="20" forecolor="#000000" uuid="23620462-de01-498f-8156-0dd1c440842b">
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8afbe2cb-3871-4ac5-bff3-08cb5b9811ce"/>
                 </reportElement>
-                <textElement>
-                    <font fontName="Arial" size="12" isBold="true"/>
+                <box>
+                    <pen lineWidth="0.25"/>
+                </box>
+                <textElement textAlignment="Center">
+                    <font fontName="Arial" size="14" isBold="true"/>
                 </textElement>
                 <text><![CDATA[Description]]></text>
             </staticText>
@@ -138,8 +165,11 @@
                 <reportElement style="Column header" positionType="Float" x="333" y="0" width="111" height="20" forecolor="#000000" uuid="2ba7b608-dd3e-4d2c-9d5a-18b78334ede2">
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="029730f9-baed-48e7-8df0-ffbf3669e00c"/>
                 </reportElement>
-                <textElement>
-                    <font fontName="Arial" size="12" isBold="true"/>
+                <box>
+                    <pen lineWidth="0.25"/>
+                </box>
+                <textElement textAlignment="Center">
+                    <font fontName="Arial" size="14" isBold="true"/>
                 </textElement>
                 <text><![CDATA[Room]]></text>
             </staticText>
@@ -147,8 +177,11 @@
                 <reportElement style="Column header" positionType="Float" x="444" y="0" width="111" height="20" forecolor="#000000" uuid="68e4ccc8-b38a-45e5-a585-98b39864b30e">
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0beeb212-54d0-4762-9334-ee396608ed7a"/>
                 </reportElement>
-                <textElement>
-                    <font fontName="Arial" size="12" isBold="true"/>
+                <box>
+                    <pen lineWidth="0.25"/>
+                </box>
+                <textElement textAlignment="Center">
+                    <font fontName="Arial" size="14" isBold="true"/>
                 </textElement>
                 <text><![CDATA[Status]]></text>
             </staticText>
@@ -160,15 +193,21 @@
                 <reportElement style="Detail" positionType="Float" x="0" y="0" width="111" height="20" uuid="332e8545-17fa-4aaf-b49a-dfe65da9b590">
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f62b0293-1a06-4eae-af5b-5d8c798481cb"/>
                 </reportElement>
+                <box>
+                    <pen lineWidth="0.25"/>
+                </box>
                 <textElement>
                     <font fontName="Arial" size="12" isBold="false"/>
                 </textElement>
                 <textFieldExpression><![CDATA[$F{cID}]]></textFieldExpression>
             </textField>
             <textField textAdjust="StretchHeight" isBlankWhenNull="true">
-                <reportElement style="Detail" positionType="Float" x="111" y="0" width="111" height="20" uuid="7acb6f87-362f-4dbd-bf20-fa8d6f39c0b0">
+                <reportElement style="Detail" positionType="Float" x="333" y="0" width="111" height="20" uuid="7acb6f87-362f-4dbd-bf20-fa8d6f39c0b0">
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0f911d1e-0e7e-42a5-a3fe-8926242d1ea7"/>
                 </reportElement>
+                <box>
+                    <pen lineWidth="0.25"/>
+                </box>
                 <textElement>
                     <font fontName="Arial" size="12" isBold="false"/>
                 </textElement>
@@ -178,24 +217,33 @@
                 <reportElement style="Detail" positionType="Float" x="222" y="0" width="111" height="20" uuid="3f4fe75e-1235-455a-bc23-1b68b3593a1c">
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8afbe2cb-3871-4ac5-bff3-08cb5b9811ce"/>
                 </reportElement>
+                <box>
+                    <pen lineWidth="0.25"/>
+                </box>
                 <textElement>
                     <font fontName="Arial" size="12" isBold="false"/>
                 </textElement>
                 <textFieldExpression><![CDATA[$F{description}]]></textFieldExpression>
             </textField>
             <textField textAdjust="StretchHeight" isBlankWhenNull="true">
-                <reportElement style="Detail" positionType="Float" x="333" y="0" width="111" height="20" uuid="41571a75-3378-4404-953b-4495256ab314">
+                <reportElement style="Detail" positionType="Float" x="444" y="0" width="111" height="20" uuid="41571a75-3378-4404-953b-4495256ab314">
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="029730f9-baed-48e7-8df0-ffbf3669e00c"/>
                 </reportElement>
+                <box>
+                    <pen lineWidth="0.25"/>
+                </box>
                 <textElement>
                     <font fontName="Arial" size="12" isBold="false"/>
                 </textElement>
                 <textFieldExpression><![CDATA[$F{status}]]></textFieldExpression>
             </textField>
             <textField textAdjust="StretchHeight" isBlankWhenNull="true">
-                <reportElement style="Detail" positionType="Float" x="444" y="0" width="111" height="20" uuid="6d3d0396-a832-4a9b-be30-5e37f69bebf2">
+                <reportElement style="Detail" positionType="Float" x="111" y="0" width="111" height="20" uuid="6d3d0396-a832-4a9b-be30-5e37f69bebf2">
                     <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0beeb212-54d0-4762-9334-ee396608ed7a"/>
                 </reportElement>
+                <box>
+                    <pen lineWidth="0.25"/>
+                </box>
                 <textElement>
                     <font fontName="Arial" size="12" isBold="false"/>
                 </textElement>
@@ -204,13 +252,13 @@
         </band>
     </detail>
     <lastPageFooter>
-        <band height="177">
+        <band height="182">
             <staticText>
-                <reportElement positionType="Float" mode="Opaque" x="0" y="147" width="556" height="30" backcolor="#E6E8E9" uuid="36aa233d-4305-48e6-974a-1bbf89bb3c8f"/>
+                <reportElement positionType="Float" mode="Opaque" x="0" y="147" width="556" height="30" forecolor="#FFFFFF" backcolor="#030303" uuid="36aa233d-4305-48e6-974a-1bbf89bb3c8f"/>
                 <textElement textAlignment="Center" verticalAlignment="Middle">
                     <font fontName="Serif" size="9" isItalic="true"/>
                 </textElement>
-                <text><![CDATA[University of Ruhuna]]></text>
+                <text><![CDATA[Faculy of Technology - University of Ruhuna]]></text>
             </staticText>
         </band>
     </lastPageFooter>
