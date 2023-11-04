@@ -39,5 +39,11 @@ public class Complain {
 
 
 
+    public Long getcID() {
+        return cID;
+    }
+
+
+
 
 }
