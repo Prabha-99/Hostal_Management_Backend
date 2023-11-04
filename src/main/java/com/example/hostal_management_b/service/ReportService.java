@@ -2,6 +2,8 @@ package com.example.hostal_management_b.service;
 
 
 import com.example.hostal_management_b.model.Complain;
+import com.example.hostal_management_b.model.ComplainLog;
+import com.example.hostal_management_b.repository.ComplainLogRepo;
 import com.example.hostal_management_b.repository.ComplainRepo;
 import lombok.RequiredArgsConstructor;
 import net.sf.jasperreports.engine.*;
@@ -27,7 +29,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class ReportService {
     private final JdbcTemplate jdbcTemplate;
-    private final ComplainRepo complainRepo;
+    private final ComplainLogRepo complainLogRepo;
 
 
     //Local variable to Store current Data.
@@ -40,7 +42,7 @@ public class ReportService {
     public String exportDailyReport() throws FileNotFoundException, JRException {
         String reportPath = "D:\\Generated_Reports";
 
-        List<Complain> complains=complainRepo.findAll();//Retrieving all the daily complains
+        List<ComplainLog> complains=complainLogRepo.findAll();//Retrieving all the daily complains
 
         //Loading the .jrxml file and Compiling it
         File file= ResourceUtils.getFile("classpath:report.jrxml");

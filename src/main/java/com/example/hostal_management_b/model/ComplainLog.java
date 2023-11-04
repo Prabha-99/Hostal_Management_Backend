@@ -29,8 +29,14 @@ public class ComplainLog {
     private String description;
     private String imagePath;
     private String status;
+    private String propID;
 
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
+
+
+    public Long getcID() {
+        return cID;
+    }
 }
