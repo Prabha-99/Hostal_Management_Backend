@@ -26,6 +26,8 @@ public class Complain {
     @JoinColumn(name = "reg_no")
     private User user;
 
+    private String propID;
+
     private long room;
     private String description;
     private String imagePath;
