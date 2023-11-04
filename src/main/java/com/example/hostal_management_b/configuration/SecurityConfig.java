@@ -34,6 +34,7 @@ public class SecurityConfig {
                 .requestMatchers("/api/auth/register").permitAll()
                 .requestMatchers("/api/auth/regroom").permitAll()
                 .requestMatchers("/api/auth/update-room").permitAll()
+                .requestMatchers("/api/auth/count").permitAll()
 
                 .requestMatchers("/api/qr/uploadImage").permitAll()
                 .requestMatchers("/api/complain/**").permitAll()
@@ -42,6 +43,11 @@ public class SecurityConfig {
                 .requestMatchers("/api/room/add").permitAll()
                 .requestMatchers("/api/room/all").permitAll()
                 .requestMatchers("/api/reports/**").permitAll()
+                .requestMatchers("/api/room/count").permitAll()
+                .requestMatchers("/api/property/add").permitAll()
+                .requestMatchers("/api/property/all").permitAll()
+                .requestMatchers("/api/property/count").permitAll()
+
 
 
                 .anyRequest().authenticated()

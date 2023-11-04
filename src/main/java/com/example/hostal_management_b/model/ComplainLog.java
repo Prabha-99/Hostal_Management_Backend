@@ -8,14 +8,14 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.util.Date;
-import java.util.List;
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Table(name = "complain")
-public class Complain {
+@Table(name = "complainlog")
+public class ComplainLog {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long cID;
@@ -25,9 +25,6 @@ public class Complain {
     @ManyToOne
     @JoinColumn(name = "reg_no")
     private User user;
-
-    private String propID;
-
     private long room;
     private String description;
     private String imagePath;
@@ -36,14 +33,4 @@ public class Complain {
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
-
-
-
-    public Long getcID() {
-        return cID;
-    }
-
-
-
-
 }
