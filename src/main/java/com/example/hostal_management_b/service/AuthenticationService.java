@@ -10,12 +10,14 @@ import com.example.hostal_management_b.model.Role;
 import com.example.hostal_management_b.repository.User_Repo;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -27,6 +29,8 @@ public class AuthenticationService {
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
     private final RoomService roomService; // Inject RoomService
+    private final JdbcTemplate jdbcTemplate;
+
 
     public AuthenticationResponse register(User_Registration_Request request) {
         if ("STUDENT".equals(request.getRole())) {
@@ -181,5 +185,15 @@ public class AuthenticationService {
 
     public long getUserCount (){
         return userRepo.count();
+    }
+
+    public List<Map<String, Object>> getStudentInfo() {
+        String sql = "SELECT * FROM StudentInfo";
+        return jdbcTemplate.queryForList(sql);
+    }
+
+    public List<Map<String, Object>> getStaffInfo() {
+        String sql = "SELECT * FROM StaffInfo";
+        return jdbcTemplate.queryForList(sql);
     }
 }

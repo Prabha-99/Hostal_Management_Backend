@@ -19,6 +19,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -63,6 +64,17 @@ public class AuthController {
     public ResponseEntity<Long> getRoomCount() {
         long count = authenticationService.getUserCount();
         return ResponseEntity.ok(count);
+    }
+
+    @GetMapping("/students")
+    public List<Map<String, Object>> getStudentInfo() {
+        return authenticationService.getStudentInfo();
+    }
+
+
+    @GetMapping("/staff")
+    public List<Map<String, Object>> getStaffInfo() {
+        return authenticationService.getStaffInfo();
     }
 
 
