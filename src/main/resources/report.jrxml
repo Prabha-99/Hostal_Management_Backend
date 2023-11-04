@@ -91,7 +91,6 @@
             </staticText>
             <image>
                 <reportElement x="140" y="0" width="50" height="60" uuid="3936b23a-cfbc-4ffa-afbb-75d9e105a2b9"/>
-                <imageExpression><![CDATA["C:\Users\Hi\Desktop\LOGO_OF_RUHUNA.jpg"]]></imageExpression>
             </image>
             <staticText>
                 <reportElement x="207" y="40" width="237" height="30" uuid="a0185cbd-9f20-4a67-8ae2-238daa4e5841">

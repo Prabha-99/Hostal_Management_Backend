@@ -3,6 +3,7 @@ package com.example.hostal_management_b.service;
 import com.example.hostal_management_b.controller.DeanComplainsRepo;
 import com.example.hostal_management_b.model.Complain;
 import com.example.hostal_management_b.model.DeanComplains;
+import com.example.hostal_management_b.model.Report;
 import com.example.hostal_management_b.repository.ComplainRepo;
 import com.example.hostal_management_b.repository.ReportRepo;
 import lombok.RequiredArgsConstructor;
@@ -74,6 +75,7 @@ public class ReportService {
 
         return "Report generated Successfully at : "+reportPath;
     }
+
 
 
 }

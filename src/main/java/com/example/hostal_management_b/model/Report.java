@@ -17,7 +17,6 @@ public class Report {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long report_id;
     private String report_name;
-    private String report_type;
     private String path;
     private Date date;
 
