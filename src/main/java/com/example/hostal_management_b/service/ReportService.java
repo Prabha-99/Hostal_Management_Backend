@@ -3,7 +3,6 @@ package com.example.hostal_management_b.service;
 
 import com.example.hostal_management_b.model.Complain;
 import com.example.hostal_management_b.repository.ComplainRepo;
-import com.example.hostal_management_b.repository.ReportRepo;
 import lombok.RequiredArgsConstructor;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
@@ -28,7 +27,6 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class ReportService {
     private final JdbcTemplate jdbcTemplate;
-    private final ReportRepo reportRepo;
     private final ComplainRepo complainRepo;
 
 
