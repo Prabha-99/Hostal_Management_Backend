@@ -74,18 +74,18 @@ public class ReportService {
         return "Report generated Successfully at : "+reportPath;
     }
 
-
+    // Map the fields
     private static class ComplainLogRowMapper implements RowMapper<ComplainLog> {
         @Override
         public ComplainLog mapRow(ResultSet rs, int rowNum) throws SQLException {
             ComplainLog complainLog = new ComplainLog();
-            complainLog.setcID(rs.getLong("cID"));
+            complainLog.setCID(rs.getLong("cid"));
             complainLog.setCreatedAt(rs.getTimestamp("created_at"));
             complainLog.setRoom(rs.getLong("room"));
             complainLog.setDescription(rs.getString("description"));
             complainLog.setPropID(rs.getString("propID"));
             complainLog.setStatus(rs.getString("status"));
-            // Map other fields as needed
+
             return complainLog;
         }
     }

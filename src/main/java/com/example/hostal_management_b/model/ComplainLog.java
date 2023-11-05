@@ -35,12 +35,11 @@ public class ComplainLog {
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
 
-    public Long getcID() {
+   public Long getcID() {
         return cID;
     }
 
-    public void setcID(long cID) {
-    }
+
 
 
 
