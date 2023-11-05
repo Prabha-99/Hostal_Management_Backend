@@ -1,11 +1,9 @@
 package com.example.hostal_management_b.controller;
 
 import com.example.hostal_management_b.configuration.AuthenticationResponse;
-import com.example.hostal_management_b.dto.NavBarLogin;
-import com.example.hostal_management_b.dto.UserDto;
-import com.example.hostal_management_b.dto.User_Registration_Request;
-import com.example.hostal_management_b.dto.LoginRequest;
+import com.example.hostal_management_b.dto.*;
 import com.example.hostal_management_b.model.User;
+import com.example.hostal_management_b.repository.User_Repo;
 import com.example.hostal_management_b.service.AuthenticationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -27,6 +25,7 @@ import java.util.Map;
 public class AuthController {
     private final AuthenticationService authenticationService;
     private final PasswordEncoder passwordEncoder;
+    private final User_Repo userRepo;
 
     @PostMapping("/register")
     public ResponseEntity<AuthenticationResponse> register (@RequestBody User_Registration_Request request){
@@ -75,6 +74,11 @@ public class AuthController {
     @GetMapping("/staff")
     public List<Map<String, Object>> getStaffInfo() {
         return authenticationService.getStaffInfo();
+    }
+
+    @GetMapping("/users")
+    public List<RoomMatesDto> getUsersByRoom(@RequestParam String inputRoom) {
+        return authenticationService.findRoomMates(inputRoom);
     }
 
 
