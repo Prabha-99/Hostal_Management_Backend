@@ -1,12 +1,8 @@
 package com.example.hostal_management_b.service;
 
 
-import com.example.hostal_management_b.model.Complain;
+
 import com.example.hostal_management_b.model.ComplainLog;
-import com.example.hostal_management_b.model.DeanComplains;
-import com.example.hostal_management_b.repository.ComplainLogRepo;
-import com.example.hostal_management_b.repository.ComplainRepo;
-import com.example.hostal_management_b.repository.DeanComplainsRepo;
 import lombok.RequiredArgsConstructor;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
@@ -30,8 +26,6 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class ReportService {
     private final JdbcTemplate jdbcTemplate;
-    private final ComplainLogRepo complainLogRepo;
-    private final DeanComplainsRepo deanComplainsRepo;
 
 
     //Local variable to Store current Data.
@@ -40,7 +34,7 @@ public class ReportService {
     String dateCreated = currentDate.format(formatter);
 
 
-
+    //Export the daily report
     public String exportDailyReport() throws FileNotFoundException, JRException {
         String reportPath = "D:\\Generated_Reports";
 
@@ -74,23 +68,6 @@ public class ReportService {
         return "Report generated Successfully at : "+reportPath;
     }
 
-    // Map the fields
-    private static class ComplainLogRowMapper implements RowMapper<ComplainLog> {
-        @Override
-        public ComplainLog mapRow(ResultSet rs, int rowNum) throws SQLException {
-            ComplainLog complainLog = new ComplainLog();
-            complainLog.setCID(rs.getLong("cid"));
-            complainLog.setCreatedAt(rs.getTimestamp("created_at"));
-            complainLog.setRoom(rs.getLong("room"));
-            complainLog.setDescription(rs.getString("description"));
-            complainLog.setPropID(rs.getString("propID"));
-            complainLog.setStatus(rs.getString("status"));
-
-            return complainLog;
-        }
-    }
-
-
 
 
 
@@ -99,7 +76,7 @@ public class ReportService {
     public String exportMonthlyReport() throws FileNotFoundException, JRException {
         String reportPath = "D:\\Monthly_report";
 
-        List<DeanComplains> complains=deanComplainsRepo.findAll();//Retrieving all the Monthly complains
+        List<ComplainLog> complains=jdbcTemplate.query("CALL GetMonthlyComplainForMonth();", new ComplainLogRowMapper());//Retrieving all the Monthly complains
 
         //Loading the .jrxml file and Compiling it
         File file= ResourceUtils.getFile("classpath:monthly_report.jrxml");
@@ -127,6 +104,25 @@ public class ReportService {
 
 
         return "Report generated Successfully at : "+reportPath;
+    }
+
+
+
+
+    // Map the fields
+    private static class ComplainLogRowMapper implements RowMapper<ComplainLog> {
+        @Override
+        public ComplainLog mapRow(ResultSet rs, int rowNum) throws SQLException {
+            ComplainLog complainLog = new ComplainLog();
+            complainLog.setCID(rs.getLong("cid"));
+            complainLog.setCreatedAt(rs.getTimestamp("created_at"));
+            complainLog.setRoom(rs.getLong("room"));
+            complainLog.setDescription(rs.getString("description"));
+            complainLog.setPropID(rs.getString("propID"));
+            complainLog.setStatus(rs.getString("status"));
+
+            return complainLog;
+        }
     }
 
 
