@@ -47,8 +47,6 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    @OneToMany(mappedBy = "user")
-    private List<Complain> complaints;
 
     @JsonIgnoreProperties(ignoreUnknown = true) // Add this annotation to ignore the "enabled" field during JSON parsing
     private boolean enabled;

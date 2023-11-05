@@ -26,6 +26,7 @@ public class DeanComplains {
     private String description;
     private String imagePath;
     private String status;
+    private String reg_no;
 
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)

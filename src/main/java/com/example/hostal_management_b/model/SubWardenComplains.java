@@ -21,6 +21,7 @@ public class SubWardenComplains {
     private Long cID;
     @JsonProperty("cType")
     private String cType;
+    private String propID;
     private long room;
     private String description;
     private String imagePath;
