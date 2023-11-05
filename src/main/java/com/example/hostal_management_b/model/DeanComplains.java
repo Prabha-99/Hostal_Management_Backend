@@ -21,6 +21,7 @@ public class DeanComplains {
     private Long cID;
     @JsonProperty("cType")
     private String cType;
+    private String propID;
     private long room;
     private String description;
     private String imagePath;

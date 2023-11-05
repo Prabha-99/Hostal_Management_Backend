@@ -67,7 +67,7 @@ public class ReportService {
 
         //Printing the Report
         JasperPrint print= JasperFillManager.fillReport(jasperReport,parameters,source);
-        JasperExportManager.exportReportToPdfFile(print,reportPath+"\\Complains"+System.currentTimeMillis()+".pdf");
+        JasperExportManager.exportReportToPdfFile(print,reportPath+"\\Daily_Complains"+System.currentTimeMillis()+".pdf");
 
 
         return "Report generated Successfully at : "+reportPath;
@@ -85,7 +85,7 @@ public class ReportService {
         List<DeanComplains> complains=deanComplainsRepo.findAll();//Retrieving all the Monthly complains
 
         //Loading the .jrxml file and Compiling it
-        File file= ResourceUtils.getFile("classpath:report.jrxml");
+        File file= ResourceUtils.getFile("classpath:monthly_report.jrxml");
         JasperReport jasperReport= JasperCompileManager.compileReport(file.getAbsolutePath());
 
         //Mapping List Data into the Report
