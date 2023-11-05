@@ -25,6 +25,7 @@ public class ComplainLog {
     @ManyToOne
     @JoinColumn(name = "reg_no")
     private User user;
+    private String propID;
     private long room;
     private String description;
     private String imagePath;
@@ -33,4 +34,8 @@ public class ComplainLog {
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
+
+    public Long getcID() {
+        return cID;
+    }
 }
