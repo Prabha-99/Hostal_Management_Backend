@@ -25,4 +25,9 @@ public class ReportController {
         return reportService.exportDailyReport();
     }
 
+    @GetMapping("/monthlyReport")
+    public String generateMonthlyReport() throws JRException, FileNotFoundException{
+        return reportService.exportMonthlyReport();
+    }
+
 }
