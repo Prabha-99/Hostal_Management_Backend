@@ -2,13 +2,16 @@ package com.example.hostal_management_b.service;
 
 
 import com.example.hostal_management_b.model.Complain;
+import com.example.hostal_management_b.model.ComplainLog;
 import com.example.hostal_management_b.model.DeanComplains;
+import com.example.hostal_management_b.repository.ComplainLogRepo;
 import com.example.hostal_management_b.repository.ComplainRepo;
 import com.example.hostal_management_b.repository.DeanComplainsRepo;
 import lombok.RequiredArgsConstructor;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Service;
@@ -16,9 +19,7 @@ import org.springframework.util.ResourceUtils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.sql.PreparedStatement;
-import java.sql.Statement;
-import java.sql.Timestamp;
+import java.sql.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
@@ -29,7 +30,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class ReportService {
     private final JdbcTemplate jdbcTemplate;
-    private final ComplainRepo complainRepo;
+    private final ComplainLogRepo complainLogRepo;
     private final DeanComplainsRepo deanComplainsRepo;
 
 
@@ -43,7 +44,7 @@ public class ReportService {
     public String exportDailyReport() throws FileNotFoundException, JRException {
         String reportPath = "D:\\Generated_Reports";
 
-        List<Complain> complains=complainRepo.findAll();//Retrieving all the daily complains
+        List<ComplainLog> complains= jdbcTemplate.query("CALL GetDailyComplainsForCurrentDate();", new ComplainLogRowMapper());//Retrieving all the daily complains
 
         //Loading the .jrxml file and Compiling it
         File file= ResourceUtils.getFile("classpath:report.jrxml");
@@ -71,6 +72,22 @@ public class ReportService {
 
 
         return "Report generated Successfully at : "+reportPath;
+    }
+
+    // Map the fields
+    private static class ComplainLogRowMapper implements RowMapper<ComplainLog> {
+        @Override
+        public ComplainLog mapRow(ResultSet rs, int rowNum) throws SQLException {
+            ComplainLog complainLog = new ComplainLog();
+            complainLog.setCID(rs.getLong("cid"));
+            complainLog.setCreatedAt(rs.getTimestamp("created_at"));
+            complainLog.setRoom(rs.getLong("room"));
+            complainLog.setDescription(rs.getString("description"));
+            complainLog.setPropID(rs.getString("propID"));
+            complainLog.setStatus(rs.getString("status"));
+
+            return complainLog;
+        }
     }
 
 
