@@ -6,6 +6,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class ComplainService {
@@ -46,5 +47,15 @@ public class ComplainService {
         jdbcTemplate.execute("CALL UpdatePropertyStatus();");
 
         return savedComplaint;
+    }
+
+    public List<Map<String, Object>> getAcceptedComplainInfo() {
+        String sql = "SELECT * FROM AcceptedComplains";
+        return jdbcTemplate.queryForList(sql);
+    }
+
+    public List<Map<String, Object>> getNullComplainInfo() {
+        String sql = "SELECT * FROM NullComplains";
+        return jdbcTemplate.queryForList(sql);
     }
 }
