@@ -1,6 +1,7 @@
 package com.example.hostal_management_b.service;
 
 import com.example.hostal_management_b.configuration.AuthenticationResponse;
+import com.example.hostal_management_b.dto.RoomMatesDto;
 import com.example.hostal_management_b.dto.UserDto;
 import com.example.hostal_management_b.dto.User_Registration_Request;
 import com.example.hostal_management_b.dto.LoginRequest;
@@ -10,6 +11,7 @@ import com.example.hostal_management_b.model.Role;
 import com.example.hostal_management_b.repository.User_Repo;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -196,4 +198,19 @@ public class AuthenticationService {
         String sql = "SELECT * FROM StaffInfo";
         return jdbcTemplate.queryForList(sql);
     }
+
+    public List<RoomMatesDto> findRoomMates(String inputRoom) {
+        String query = "CALL FindRoomMates(?)";
+        return jdbcTemplate.query(query, new Object[]{inputRoom}, (rs, rowNum) -> {
+            RoomMatesDto user = new RoomMatesDto();
+            user.setId(rs.getInt("id"));
+            user.setFirstname(rs.getString("firstname"));
+            user.setLastname(rs.getString("lastname"));
+            user.setEmail(rs.getString("email"));
+            user.setRole(rs.getString("role"));
+            user.setReg_no(rs.getString("reg_no"));
+            return user;
+        });
+    }
+
 }
