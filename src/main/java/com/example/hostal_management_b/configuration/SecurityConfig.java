@@ -38,6 +38,8 @@ public class SecurityConfig {
 
                 .requestMatchers("/api/qr/uploadImage").permitAll()
                 .requestMatchers("/api/complain/**").permitAll()
+                .requestMatchers("/api/academicwardencomplains/**").permitAll()
+                .requestMatchers("/api/deancomplains/**").permitAll()
 
 
                 .requestMatchers("/api/room/add").permitAll()

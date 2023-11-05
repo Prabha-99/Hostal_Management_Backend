@@ -1,6 +1,8 @@
 package com.example.hostal_management_b.service;
 
 import com.example.hostal_management_b.model.Complain;
+import com.example.hostal_management_b.model.ComplainLog;
+import com.example.hostal_management_b.repository.ComplainLogRepo;
 import com.example.hostal_management_b.repository.ComplainRepo;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +12,8 @@ import java.util.List;
 public class ComplainService {
     private final ComplainRepo complainRepo;
 
-    public ComplainService(ComplainRepo complainRepo) {
+
+    public ComplainService(ComplainRepo complainRepo, ComplainLogRepo complainLogRepo) {
         this.complainRepo = complainRepo;
     }
 
