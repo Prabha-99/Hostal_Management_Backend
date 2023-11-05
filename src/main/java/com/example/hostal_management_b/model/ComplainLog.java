@@ -38,4 +38,10 @@ public class ComplainLog {
     public Long getcID() {
         return cID;
     }
+
+    public void setcID(long cID) {
+    }
+
+
+
 }
