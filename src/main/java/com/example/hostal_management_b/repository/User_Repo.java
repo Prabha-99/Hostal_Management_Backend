@@ -3,9 +3,11 @@ package com.example.hostal_management_b.repository;
 import com.example.hostal_management_b.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Repository
@@ -18,6 +20,9 @@ public interface User_Repo extends JpaRepository<User, Integer> {
 
     @Query("SELECT u.reg_no, u.room , u.id FROM User u WHERE u.role = 'STUDENT'")
     List<Object[]> findAllStudentsRegistrationAndRoom();
+
+    @Query(nativeQuery = true, value = "CALL FindRoomMates(:room)")
+    List<Map<String, Object>> findRoomMates(@Param("room") String room);
 
 
 }

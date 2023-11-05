@@ -31,4 +31,11 @@ public class DeanComplains {
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
+
+
+
+    public Long getcID() {
+        return cID;
+    }
+
 }
