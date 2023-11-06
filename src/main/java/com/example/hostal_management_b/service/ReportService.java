@@ -10,6 +10,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
 
@@ -35,6 +36,7 @@ public class ReportService {
 
 
     //Export the daily report
+    @Scheduled(cron = "0 06 00 * * ?")
     public String exportDailyReport() throws FileNotFoundException, JRException {
         String reportPath = "D:\\Generated_Reports";
 
@@ -72,7 +74,7 @@ public class ReportService {
 
 
     //Export Monthly report
-
+    @Scheduled(cron = "0 00 21 25 * ?")
     public String exportMonthlyReport() throws FileNotFoundException, JRException {
         String reportPath = "D:\\Monthly_report";
 
