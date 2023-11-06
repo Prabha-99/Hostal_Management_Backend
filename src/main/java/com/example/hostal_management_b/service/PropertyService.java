@@ -90,7 +90,8 @@ public class PropertyService {
     }
 
     public long getCountItems(){
-        return propertyRepo.count();
+        String sql = "SELECT GetPropertyCount()";
+        return jdbcTemplate.queryForObject(sql, Long.class);
     }
 
 

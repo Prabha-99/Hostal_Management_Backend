@@ -3,6 +3,7 @@ package com.example.hostal_management_b.service;
 import com.example.hostal_management_b.model.Room;
 import com.example.hostal_management_b.repository.RoomRepo;
 import lombok.RequiredArgsConstructor;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class RoomService {
     private final RoomRepo roomRepo;
+    private final JdbcTemplate jdbcTemplate;
 
     public Room addRoom (Room room){
         return roomRepo.save(room);
@@ -30,7 +32,8 @@ public class RoomService {
     }
 
     public long getRoomCount() {
-        return roomRepo.count();
+        String sql = "SELECT GetRoomCount()";
+        return jdbcTemplate.queryForObject(sql, Long.class);
     }
 
 }
