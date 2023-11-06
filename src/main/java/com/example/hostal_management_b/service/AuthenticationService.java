@@ -186,7 +186,8 @@ public class AuthenticationService {
     }
 
     public long getUserCount (){
-        return userRepo.count();
+        String sql = "SELECT GetUserCount()";
+        return jdbcTemplate.queryForObject(sql, Long.class);
     }
 
     public List<Map<String, Object>> getStudentInfo() {
