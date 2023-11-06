@@ -1,6 +1,8 @@
 package com.example.hostal_management_b.service;
 
 import com.example.hostal_management_b.model.Complain;
+import com.example.hostal_management_b.model.ComplainLog;
+import com.example.hostal_management_b.repository.ComplainLogRepo;
 import com.example.hostal_management_b.repository.ComplainRepo;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
@@ -12,6 +14,7 @@ import java.util.Map;
 public class ComplainService {
     private final ComplainRepo complainRepo;
     private final JdbcTemplate jdbcTemplate;
+
 
     public ComplainService(ComplainRepo complainRepo, JdbcTemplate jdbcTemplate) {
         this.complainRepo = complainRepo;

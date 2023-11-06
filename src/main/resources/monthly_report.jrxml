@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.5.final using JasperReports Library version 6.20.5-3efcf2e67f959db3888d79f73dde2dbd7acb4f8e  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4eedbb89-b4f6-4469-9ab6-f642a1688cf7">
+    <property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+    <property name="com.jaspersoft.studio.data.defaultdataadapter" value="Sample DB"/>
+    <style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+    <style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+    <style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true"/>
+    <style name="Detail" mode="Transparent" fontName="Times New Roman"/>
+    <style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+        <conditionalStyle>
+            <conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+            <style mode="Opaque" backcolor="#EEEFF0"/>
+        </conditionalStyle>
+    </style>
+    <style name="Table">
+        <box>
+            <pen lineWidth="1.0" lineColor="#000000"/>
+            <topPen lineWidth="1.0" lineColor="#000000"/>
+            <leftPen lineWidth="1.0" lineColor="#000000"/>
+            <bottomPen lineWidth="1.0" lineColor="#000000"/>
+            <rightPen lineWidth="1.0" lineColor="#000000"/>
+        </box>
+    </style>
+    <style name="Table_TH" mode="Opaque" backcolor="#FFFFFF">
+        <box>
+            <pen lineWidth="0.5" lineColor="#000000"/>
+            <topPen lineWidth="0.5" lineColor="#000000"/>
+            <leftPen lineWidth="0.5" lineColor="#000000"/>
+            <bottomPen lineWidth="0.5" lineColor="#000000"/>
+            <rightPen lineWidth="0.5" lineColor="#000000"/>
+        </box>
+    </style>
+    <style name="Table_CH" mode="Opaque" backcolor="#CACED0">
+        <box>
+            <pen lineWidth="0.5" lineColor="#000000"/>
+            <topPen lineWidth="0.5" lineColor="#000000"/>
+            <leftPen lineWidth="0.5" lineColor="#000000"/>
+            <bottomPen lineWidth="0.5" lineColor="#000000"/>
+            <rightPen lineWidth="0.5" lineColor="#000000"/>
+        </box>
+    </style>
+    <style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
+        <box>
+            <pen lineWidth="0.5" lineColor="#000000"/>
+            <topPen lineWidth="0.5" lineColor="#000000"/>
+            <leftPen lineWidth="0.5" lineColor="#000000"/>
+            <bottomPen lineWidth="0.5" lineColor="#000000"/>
+            <rightPen lineWidth="0.5" lineColor="#000000"/>
+        </box>
+        <conditionalStyle>
+            <conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+            <style backcolor="#D8D8D8"/>
+        </conditionalStyle>
+    </style>
+    <subDataset name="tableDataset" uuid="f13e6d36-5148-4ecc-bbe3-3035def80980">
+        <queryString>
+            <![CDATA[]]>
+        </queryString>
+    </subDataset>
+    <queryString language="SQL">
+        <![CDATA[SELECT * FROM ORDERS;]]>
+    </queryString>
+    <field name="cID" class="java.lang.Long"/>
+    <field name="room" class="java.lang.Long"/>
+    <field name="description" class="java.lang.String"/>
+    <field name="status" class="java.lang.String"/>
+    <field name="createdAt" class="java.util.Date"/>
+    <field name="propID" class="java.lang.String"/>
+    <title>
+        <band height="163" splitType="Stretch">
+            <staticText>
+                <reportElement style="Table" x="90" y="20" width="301" height="30" uuid="e622555d-198b-4ccd-a4a1-c59c53304058">
+                    <property name="local_mesure_unitheight" value="pixel"/>
+                    <property name="com.jaspersoft.studio.unit.height" value="px"/>
+                </reportElement>
+                <box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+                    <pen lineWidth="1.0" lineColor="#FFFFFF"/>
+                </box>
+                <textElement>
+                    <font size="20" isBold="true"/>
+                </textElement>
+                <text><![CDATA[FACULTY OF TECHNOLOGY]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="90" y="50" width="237" height="30" uuid="a0185cbd-9f20-4a67-8ae2-238daa4e5841">
+                    <property name="local_mesure_unitheight" value="pixel"/>
+                    <property name="com.jaspersoft.studio.unit.height" value="px"/>
+                    <property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+                </reportElement>
+                <textElement>
+                    <font size="16" isBold="true"/>
+                </textElement>
+                <text><![CDATA[UNIVERSITY OF RUHUNA]]></text>
+            </staticText>
+            <image>
+                <reportElement x="40" y="20" width="50" height="50" uuid="8162b307-e4e8-469d-9651-372e35ddc6d8"/>
+                <imageExpression><![CDATA["LOGO_OF_RUHUNA.jpg"]]></imageExpression>
+            </image>
+            <staticText>
+                <reportElement x="154" y="120" width="237" height="30" uuid="e33303d2-886a-4ff7-8e4f-14c6cdae1ae7">
+                    <property name="local_mesure_unitheight" value="pixel"/>
+                    <property name="com.jaspersoft.studio.unit.height" value="px"/>
+                    <property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+                </reportElement>
+                <textElement textAlignment="Center">
+                    <font size="14" isBold="true"/>
+                </textElement>
+                <text><![CDATA[STUDENT'S COMPLAIN REPORT]]></text>
+            </staticText>
+            <staticText>
+                <reportElement positionType="Float" mode="Opaque" x="380" y="0" width="176" height="80" forecolor="#FFFFFF" backcolor="#A6051A" uuid="97fdf69f-d9d7-4b47-9849-121a55f95a74"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="Serif" size="9" isItalic="true"/>
+                </textElement>
+                <text><![CDATA[]]></text>
+            </staticText>
+            <staticText>
+                <reportElement positionType="Float" mode="Opaque" x="0" y="0" width="30" height="80" forecolor="#FFFFFF" backcolor="#A6051A" uuid="65d1d6b5-aabd-4979-bab0-9c9ec1d21a84"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="Serif" size="9" isItalic="true"/>
+                </textElement>
+                <text><![CDATA[]]></text>
+            </staticText>
+        </band>
+    </title>
+    <columnHeader>
+        <band height="25">
+            <staticText>
+                <reportElement style="Column header" positionType="Float" x="0" y="0" width="90" height="20" forecolor="#000000" uuid="181a4e47-7f21-43a3-9a2b-955011f1b02b">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f62b0293-1a06-4eae-af5b-5d8c798481cb"/>
+                </reportElement>
+                <box>
+                    <pen lineWidth="0.25"/>
+                </box>
+                <textElement textAlignment="Center">
+                    <font fontName="Arial" size="14" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Complain ID]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="Column header" positionType="Float" x="90" y="0" width="99" height="20" forecolor="#000000" uuid="2515e2a4-977e-496e-8602-6602c2340270">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0f911d1e-0e7e-42a5-a3fe-8926242d1ea7"/>
+                </reportElement>
+                <box>
+                    <pen lineWidth="0.25"/>
+                </box>
+                <textElement textAlignment="Center">
+                    <font fontName="Arial" size="14" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Date]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="Column header" positionType="Float" x="189" y="0" width="91" height="20" forecolor="#000000" uuid="23620462-de01-498f-8156-0dd1c440842b">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8afbe2cb-3871-4ac5-bff3-08cb5b9811ce"/>
+                </reportElement>
+                <box>
+                    <pen lineWidth="0.25"/>
+                </box>
+                <textElement textAlignment="Center">
+                    <font fontName="Arial" size="14" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Description]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="Column header" positionType="Float" x="280" y="0" width="90" height="20" forecolor="#000000" uuid="2ba7b608-dd3e-4d2c-9d5a-18b78334ede2">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="029730f9-baed-48e7-8df0-ffbf3669e00c"/>
+                </reportElement>
+                <box>
+                    <pen lineWidth="0.25"/>
+                </box>
+                <textElement textAlignment="Center">
+                    <font fontName="Arial" size="14" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Room]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="Column header" positionType="Float" x="370" y="0" width="80" height="20" forecolor="#000000" uuid="68e4ccc8-b38a-45e5-a585-98b39864b30e">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0beeb212-54d0-4762-9334-ee396608ed7a"/>
+                </reportElement>
+                <box>
+                    <pen lineWidth="0.25"/>
+                </box>
+                <textElement textAlignment="Center">
+                    <font fontName="Arial" size="14" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Status]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="Column header" positionType="Float" x="450" y="0" width="101" height="20" forecolor="#000000" uuid="4d0deeb5-fc4f-461f-bf7c-c24a40735dd2">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0beeb212-54d0-4762-9334-ee396608ed7a"/>
+                </reportElement>
+                <box>
+                    <pen lineWidth="0.25"/>
+                </box>
+                <textElement textAlignment="Center">
+                    <font fontName="Arial" size="14" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Property ID]]></text>
+            </staticText>
+        </band>
+    </columnHeader>
+    <detail>
+        <band height="25">
+            <textField textAdjust="StretchHeight" isBlankWhenNull="true">
+                <reportElement style="Detail" positionType="Float" x="0" y="-5" width="90" height="20" uuid="332e8545-17fa-4aaf-b49a-dfe65da9b590">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f62b0293-1a06-4eae-af5b-5d8c798481cb"/>
+                </reportElement>
+                <box>
+                    <pen lineWidth="0.25"/>
+                </box>
+                <textElement>
+                    <font fontName="Arial" size="12" isBold="false"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{cID}]]></textFieldExpression>
+            </textField>
+            <textField textAdjust="StretchHeight" isBlankWhenNull="true">
+                <reportElement style="Detail" positionType="Float" x="280" y="-5" width="90" height="20" uuid="7acb6f87-362f-4dbd-bf20-fa8d6f39c0b0">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0f911d1e-0e7e-42a5-a3fe-8926242d1ea7"/>
+                </reportElement>
+                <box>
+                    <pen lineWidth="0.25"/>
+                </box>
+                <textElement>
+                    <font fontName="Arial" size="12" isBold="false"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{room}]]></textFieldExpression>
+            </textField>
+            <textField textAdjust="StretchHeight" isBlankWhenNull="true">
+                <reportElement style="Detail" positionType="Float" x="189" y="-5" width="91" height="20" uuid="3f4fe75e-1235-455a-bc23-1b68b3593a1c">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8afbe2cb-3871-4ac5-bff3-08cb5b9811ce"/>
+                </reportElement>
+                <box>
+                    <pen lineWidth="0.25"/>
+                </box>
+                <textElement>
+                    <font fontName="Arial" size="12" isBold="false"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{description}]]></textFieldExpression>
+            </textField>
+            <textField textAdjust="StretchHeight" isBlankWhenNull="true">
+                <reportElement style="Detail" positionType="Float" x="370" y="-5" width="80" height="20" uuid="41571a75-3378-4404-953b-4495256ab314">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="029730f9-baed-48e7-8df0-ffbf3669e00c"/>
+                </reportElement>
+                <box>
+                    <pen lineWidth="0.25"/>
+                </box>
+                <textElement>
+                    <font fontName="Arial" size="12" isBold="false"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{status}]]></textFieldExpression>
+            </textField>
+            <textField textAdjust="StretchHeight" isBlankWhenNull="true">
+                <reportElement style="Detail" positionType="Float" x="90" y="-5" width="99" height="20" uuid="6d3d0396-a832-4a9b-be30-5e37f69bebf2">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0beeb212-54d0-4762-9334-ee396608ed7a"/>
+                </reportElement>
+                <box>
+                    <pen lineWidth="0.25"/>
+                </box>
+                <textElement>
+                    <font fontName="Arial" size="12" isBold="false"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{createdAt}]]></textFieldExpression>
+            </textField>
+            <textField textAdjust="StretchHeight" isBlankWhenNull="true">
+                <reportElement style="Detail" positionType="Float" x="450" y="-5" width="101" height="20" uuid="85c95e9c-8a27-4658-8bd3-8725a92c3aad">
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="029730f9-baed-48e7-8df0-ffbf3669e00c"/>
+                </reportElement>
+                <box>
+                    <pen lineWidth="0.25"/>
+                </box>
+                <textElement>
+                    <font fontName="Arial" size="12" isBold="false"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{propID}]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+    <lastPageFooter>
+        <band height="182">
+            <staticText>
+                <reportElement positionType="Float" mode="Opaque" x="0" y="147" width="556" height="30" forecolor="#FFFFFF" backcolor="#030303" uuid="36aa233d-4305-48e6-974a-1bbf89bb3c8f"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="Serif" size="9" isItalic="true"/>
+                </textElement>
+                <text><![CDATA[Faculy of Technology - University of Ruhuna]]></text>
+            </staticText>
+        </band>
+    </lastPageFooter>
+</jasperReport>

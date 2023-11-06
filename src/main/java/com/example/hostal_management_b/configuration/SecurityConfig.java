@@ -41,16 +41,19 @@ public class SecurityConfig {
 
                 .requestMatchers("/api/qr/uploadImage").permitAll()
                 .requestMatchers("/api/complain/**").permitAll()
+                .requestMatchers("/api/academicwardencomplains/**").permitAll()
+                .requestMatchers("/api/deancomplains/**").permitAll()
 
 
                 .requestMatchers("/api/room/add").permitAll()
                 .requestMatchers("/api/room/all").permitAll()
+                .requestMatchers("/api/reports/**").permitAll()
                 .requestMatchers("/api/room/count").permitAll()
-
                 .requestMatchers("/api/property/add").permitAll()
                 .requestMatchers("/api/property/all").permitAll()
                 .requestMatchers("/api/property/count").permitAll()
                 .requestMatchers("/api/property/property").permitAll()
+
 
 
                 .anyRequest().authenticated()

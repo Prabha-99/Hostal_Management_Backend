@@ -21,16 +21,20 @@ public class ComplainLog {
     private Long cID;
     @JsonProperty("cType")
     private String cType;
-
-    @ManyToOne
-    @JoinColumn(name = "reg_no")
-    private User user;
+    private String propID;
     private long room;
     private String description;
     private String imagePath;
     private String status;
+    private String reg_no;
 
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
+
+   public Long getcID() {
+        return cID;
+    }
+
+
 }
