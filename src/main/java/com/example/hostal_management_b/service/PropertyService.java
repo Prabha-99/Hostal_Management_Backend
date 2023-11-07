@@ -34,8 +34,7 @@ public class PropertyService {
     private final RoomRepo roomRepo;
     private final ItemQRRepo itemQRRepo;
     private final JdbcTemplate jdbcTemplate;
-
-    private final JdbcTemplate jdbcTemplate;
+    
 
     // Specify the directory where QR codes will be saved
     private static final String QR_CODE_DIRECTORY = "F:\\Uni Works\\Level 3\\Sem 2\\ADBMS\\Group_Project\\QR";
