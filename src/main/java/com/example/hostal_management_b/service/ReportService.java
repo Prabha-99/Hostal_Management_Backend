@@ -35,7 +35,7 @@ public class ReportService {
     String dateCreated = currentDate.format(formatter);
 
 
-    @Scheduled(cron = "0 00 21 * * ?")
+    @Scheduled(cron = "0 18 14 * * ?")
     //Export the daily report
     public String exportDailyReport() throws FileNotFoundException, JRException {
         String reportPath = "F:\\Uni Works\\Level 3\\Sem 2\\ADBMS\\Group_Project\\Reports";

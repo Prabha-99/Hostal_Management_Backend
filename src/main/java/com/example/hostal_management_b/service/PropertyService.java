@@ -37,15 +37,15 @@ public class PropertyService {
     private final JdbcTemplate jdbcTemplate;
 
     // Specify the directory where QR codes will be saved
-    private static final String QR_CODE_DIRECTORY = "G:\\Level 3\\Semester 02\\Advanced Database Management Systems\\Group Project\\Hostal_Management_Backend\\src\\main\\java\\com\\example\\hostal_management_b\\qr_codes";
+    private static final String QR_CODE_DIRECTORY = "F:\\Uni Works\\Level 3\\Sem 2\\ADBMS\\Group_Project\\QR";
 
     public Property addProperty(Property property) {
         int roomNo = property.getRoom_no();
         Room room = roomRepo.findById(roomNo).orElse(null);
 
         if (room != null) {
-            room.setNo_of_items(room.getNo_of_items() + 1);
-            roomRepo.save(room);
+            String sql = "CALL update_no_of_items_after_adding_property()";
+            jdbcTemplate.execute(sql);
         }
 
         Property savedProperty = propertyRepo.save(property);
