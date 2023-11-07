@@ -24,4 +24,10 @@ public class DeanComplainsService {
         return deanComplainsRepo.findById(id).orElse(null);
     }
 
+    public DeanComplains updateComplaintStatus(DeanComplains updatedComplaint) {
+        // Update the status of the complaint in the database
+        updatedComplaint.setStatus("Accepted");
+        return deanComplainsRepo.save(updatedComplaint);
+    }
+
 }

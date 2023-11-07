@@ -186,7 +186,9 @@ public class AuthenticationService {
     }
 
     public long getUserCount (){
+
         String sql = "SELECT GetUserCount()";
+
         return jdbcTemplate.queryForObject(sql, Long.class);
     }
 
