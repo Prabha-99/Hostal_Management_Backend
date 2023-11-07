@@ -44,8 +44,8 @@ public class PropertyService {
         Room room = roomRepo.findById(roomNo).orElse(null);
 
         if (room != null) {
-            room.setNo_of_items(room.getNo_of_items() + 1);
-            roomRepo.save(room);
+            String sql = "CALL update_no_of_items_after_adding_property()";
+            jdbcTemplate.execute(sql);
         }
 
         Property savedProperty = propertyRepo.save(property);
