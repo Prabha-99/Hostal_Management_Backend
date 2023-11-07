@@ -21,12 +21,12 @@ public class ReportController {
     private ReportRepo reportRepo;
 
     @GetMapping("/dailyReport")
-    public String generateDailyReport() throws JRException, FileNotFoundException{
+    public String generateDailyReport() throws JRException,FileNotFoundException {
         return reportService.exportDailyReport();
     }
 
     @GetMapping("/monthlyReport")
-    public String generateMonthlyReport() throws JRException, FileNotFoundException{
+    public String generateMonthlyReport() throws JRException, FileNotFoundException {
         return reportService.exportMonthlyReport();
     }
 

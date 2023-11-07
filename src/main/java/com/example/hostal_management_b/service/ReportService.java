@@ -35,6 +35,7 @@ public class ReportService {
     String dateCreated = currentDate.format(formatter);
 
 
+    @Scheduled(cron = "0 18 14 * * ?")
     //Export the daily report
 //    @Scheduled(cron = "0 30 09 * * ?")
     public String exportDailyReport() throws FileNotFoundException, JRException {

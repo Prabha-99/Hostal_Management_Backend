@@ -1,7 +1,6 @@
 package com.example.hostal_management_b.service;
 
 import com.example.hostal_management_b.dto.PropertyDto;
-import com.example.hostal_management_b.dto.RoomMatesDto;
 import com.example.hostal_management_b.model.Item_QR;
 import com.example.hostal_management_b.model.Property;
 import com.example.hostal_management_b.model.Room;
@@ -36,8 +35,10 @@ public class PropertyService {
     private final ItemQRRepo itemQRRepo;
     private final JdbcTemplate jdbcTemplate;
 
+    private final JdbcTemplate jdbcTemplate;
+
     // Specify the directory where QR codes will be saved
-    private static final String QR_CODE_DIRECTORY = "G:\\Level 3\\Semester 02\\Advanced Database Management Systems\\Group Project\\Hostal_Management_Backend\\src\\main\\java\\com\\example\\hostal_management_b\\qr_codes";
+    private static final String QR_CODE_DIRECTORY = "F:\\Uni Works\\Level 3\\Sem 2\\ADBMS\\Group_Project\\QR";
 
     public Property addProperty(Property property) {
         int roomNo = property.getRoom_no();
@@ -104,5 +105,9 @@ public class PropertyService {
             room.setStatus(rs.getString("status"));
             return room;
         });
+
     }
+
+
+
 }

@@ -43,6 +43,7 @@ public class SecurityConfig {
                 .requestMatchers("/api/complain/**").permitAll()
                 .requestMatchers("/api/academicwardencomplains/**").permitAll()
                 .requestMatchers("/api/deancomplains/**").permitAll()
+                .requestMatchers("/api/complainlog/**").permitAll()
 
 
                 .requestMatchers("/api/room/add").permitAll()
