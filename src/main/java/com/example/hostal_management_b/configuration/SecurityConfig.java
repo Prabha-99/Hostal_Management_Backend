@@ -53,6 +53,7 @@ public class SecurityConfig {
                 .requestMatchers("/api/property/add").permitAll()
                 .requestMatchers("/api/property/all").permitAll()
                 .requestMatchers("/api/property/count").permitAll()
+                .requestMatchers("/api/property/property").permitAll()
 
 
 

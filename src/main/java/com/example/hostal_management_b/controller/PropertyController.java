@@ -1,5 +1,6 @@
 package com.example.hostal_management_b.controller;
 
+import com.example.hostal_management_b.dto.PropertyDto;
 import com.example.hostal_management_b.model.Property;
 import com.example.hostal_management_b.model.Room;
 import com.example.hostal_management_b.service.PropertyService;
@@ -31,5 +32,10 @@ public class PropertyController {
     public ResponseEntity<Long> getRoomCount() {
         long count = propertyService.getCountItems();
         return ResponseEntity.ok(count);
+    }
+
+    @GetMapping("/property")
+    public List<PropertyDto> getUsersByRoom(@RequestParam int inputRoom) {
+        return propertyService.findProperty(inputRoom);
     }
 }

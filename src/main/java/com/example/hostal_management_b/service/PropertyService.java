@@ -1,5 +1,6 @@
 package com.example.hostal_management_b.service;
 
+import com.example.hostal_management_b.dto.PropertyDto;
 import com.example.hostal_management_b.model.Item_QR;
 import com.example.hostal_management_b.model.Property;
 import com.example.hostal_management_b.model.Room;
@@ -13,6 +14,7 @@ import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
 import lombok.RequiredArgsConstructor;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 import java.io.FileOutputStream;
@@ -31,6 +33,8 @@ public class PropertyService {
     private final PropertyRepo propertyRepo;
     private final RoomRepo roomRepo;
     private final ItemQRRepo itemQRRepo;
+
+    private final JdbcTemplate jdbcTemplate;
 
     // Specify the directory where QR codes will be saved
     private static final String QR_CODE_DIRECTORY = "G:\\Level 3\\Semester 02\\Advanced Database Management Systems\\Group Project\\Hostal_Management_Backend\\src\\main\\java\\com\\example\\hostal_management_b\\qr_codes";
@@ -86,6 +90,19 @@ public class PropertyService {
     }
 
     public long getCountItems(){
-        return propertyRepo.count();
+        String sql = "SELECT GetPropertyCount()";
+        return jdbcTemplate.queryForObject(sql, Long.class);
     }
+
+
+    public List<PropertyDto> findProperty(int inputRoom) {
+        String query = "CALL GetRoomProperties(?)";
+        return jdbcTemplate.query(query, new Object[]{inputRoom}, (rs, rowNum) -> {
+            PropertyDto room = new PropertyDto();
+            room.setPropID(rs.getString("propID"));
+            room.setName(rs.getString("name"));
+            room.setStatus(rs.getString("status"));
+            return room;
+            });
+            }
 }

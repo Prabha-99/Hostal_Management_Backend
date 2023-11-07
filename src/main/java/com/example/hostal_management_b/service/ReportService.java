@@ -10,6 +10,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
 
@@ -34,9 +35,10 @@ public class ReportService {
     String dateCreated = currentDate.format(formatter);
 
 
+    @Scheduled(cron = "0 00 21 * * ?")
     //Export the daily report
     public String exportDailyReport() throws FileNotFoundException, JRException {
-        String reportPath = "D:\\Generated_Reports";
+        String reportPath = "F:\\Uni Works\\Level 3\\Sem 2\\ADBMS\\Group_Project\\Reports";
 
         List<ComplainLog> complains= jdbcTemplate.query("CALL GetDailyComplainsForCurrentDate();", new ComplainLogRowMapper());//Retrieving all the daily complains
 
@@ -72,9 +74,9 @@ public class ReportService {
 
 
     //Export Monthly report
-
+    @Scheduled(cron = "0 00 21 25 * ?")
     public String exportMonthlyReport() throws FileNotFoundException, JRException {
-        String reportPath = "D:\\Monthly_report";
+        String reportPath = "F:\\Uni Works\\Level 3\\Sem 2\\ADBMS\\Group_Project\\Reports";
 
         List<ComplainLog> complains=jdbcTemplate.query("CALL GetMonthlyComplainForMonth();", new ComplainLogRowMapper());//Retrieving all the Monthly complains
 
