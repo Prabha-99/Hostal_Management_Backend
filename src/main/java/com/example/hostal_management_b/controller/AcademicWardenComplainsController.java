@@ -29,37 +29,68 @@ public class AcademicWardenComplainsController {
         return academicWardenComplainsService.getAllAcademicWardenComplains();
     }
 
+//    @GetMapping("/download")
+//    public ResponseEntity<InputStreamResource> downloadFile(@RequestParam Long id) {
+//        AcademicWardenComplains file = academicWardenComplainsService.getFileById(id);
+//        if (file == null) {
+//            return ResponseEntity.notFound().build();
+//        }
+//        // Get the file path from the ShowroomFile entity
+//        String filePath = file.getImagePath();
+//        File downloadFile = new File(filePath);
+//
+//        if (!downloadFile.exists() || !downloadFile.isFile()) {
+//            return ResponseEntity.notFound().build();
+//        }
+//        // Set the response headers
+//        HttpHeaders headers = new HttpHeaders();
+//        headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + file.getImagePath());
+//
+//        // Create an InputStreamResource from the file path
+//        InputStreamResource inputStreamResource;
+//        try {
+//            inputStreamResource = new InputStreamResource(new FileInputStream(downloadFile));
+//        } catch (FileNotFoundException e) {
+//            return ResponseEntity.notFound().build();
+//        }
+//        // Stream the file content to the response
+//        return ResponseEntity.ok()
+//                .headers(headers)
+//                .contentType(MediaType.APPLICATION_OCTET_STREAM)
+//                .contentLength(downloadFile.length())
+//                .body(inputStreamResource);
+//    }
+
     @GetMapping("/download")
     public ResponseEntity<InputStreamResource> downloadFile(@RequestParam Long id) {
         AcademicWardenComplains file = academicWardenComplainsService.getFileById(id);
         if (file == null) {
             return ResponseEntity.notFound().build();
         }
-        // Get the file path from the ShowroomFile entity
-        String filePath = file.getImagePath();
+        String fileName = file.getCID() + ".extension"; // Use the cid as the filename
+        String filePath = file.getImagePath(); // Adjust the path as needed
         File downloadFile = new File(filePath);
 
         if (!downloadFile.exists() || !downloadFile.isFile()) {
             return ResponseEntity.notFound().build();
         }
-        // Set the response headers
         HttpHeaders headers = new HttpHeaders();
-        headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + file.getImagePath());
+        headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + fileName);
 
-        // Create an InputStreamResource from the file path
         InputStreamResource inputStreamResource;
         try {
             inputStreamResource = new InputStreamResource(new FileInputStream(downloadFile));
         } catch (FileNotFoundException e) {
             return ResponseEntity.notFound().build();
         }
-        // Stream the file content to the response
+
         return ResponseEntity.ok()
                 .headers(headers)
                 .contentType(MediaType.APPLICATION_OCTET_STREAM)
                 .contentLength(downloadFile.length())
                 .body(inputStreamResource);
     }
+
 
     @PutMapping("/updateStatus")
     public ResponseEntity<AcademicWardenComplains> updateComplaintStatus(@RequestBody AcademicWardenComplains updatedComplaint) {
