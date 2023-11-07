@@ -30,14 +30,8 @@ public class SecurityConfig {
         http
                 .csrf().disable()
                 .authorizeHttpRequests()
-                .requestMatchers("/api/auth/login").permitAll()
-                .requestMatchers("/api/auth/register").permitAll()
-                .requestMatchers("/api/auth/regroom").permitAll()
-                .requestMatchers("/api/auth/update-room").permitAll()
-                .requestMatchers("/api/auth/count").permitAll()
-                .requestMatchers("/api/auth/students").permitAll()
-                .requestMatchers("/api/auth/staff").permitAll()
-                .requestMatchers("/api/auth/users").permitAll()
+                .requestMatchers("/api/auth/**").permitAll()
+
 
                 .requestMatchers("/api/qr/uploadImage").permitAll()
                 .requestMatchers("/api/complain/**").permitAll()
